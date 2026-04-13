@@ -1,15 +1,22 @@
-import 'package:go_router/go_router.dart';
 import 'package:elearning_sman2siadoarjo/core/routes/routes_name.dart';
-import 'package:elearning_sman2siadoarjo/presentation/features/auth/screen/login_screen.dart';
 import 'package:elearning_sman2siadoarjo/presentation/features/landing_page/screens/landing_page.dart';
+import 'package:flutter/foundation.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../presentation/features/auth/screen/login_screen.dart';
+import '../../presentation/features/init/splash_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: RoutesNames.landing,
+    initialLocation: _getInitialRoute(),
     routes: [
       GoRoute(
         path: RoutesNames.landing,
         builder: (context, state) => const ElearningLandingPage(),
+      ),
+      GoRoute(
+        path: RoutesNames.splashScreen,
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
         path: RoutesNames.login,
@@ -17,4 +24,12 @@ class AppRouter {
       ),
     ],
   );
+
+  static String _getInitialRoute() {
+    if (kIsWeb) {
+      return '/'; // WEB → Landing
+    } else {
+      return RoutesNames.splashScreen; // MOBILE → Splash
+    }
+  }
 }
