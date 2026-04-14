@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:bcrypt/bcrypt.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -48,7 +47,7 @@ class SupabaseService {
       await prefs.setString('auth_token', 'local-login');
 
       // Simpan token FCM
-      await SupabaseService.saveFcmToken(userId);
+      // await SupabaseService.saveFcmToken(userId);
 
       return {'user_id': userId, 'roles': roles};
     } catch (e) {
@@ -102,22 +101,22 @@ class SupabaseService {
   }
 
   /// Simpan token FCM user ke kolom token di tabel users
-  static Future<void> saveFcmToken(String userId) async {
-    try {
-      final fcmToken = await FirebaseMessaging.instance.getToken();
-      if (fcmToken == null) return;
+  // static Future<void> saveFcmToken(String userId) async {
+  //   try {
+  //     final fcmToken = await FirebaseMessaging.instance.getToken();
+  //     if (fcmToken == null) return;
 
-      // Update token user
-      await client.from('users').update({'token': fcmToken}).eq('id', userId);
+  //     // Update token user
+  //     await client.from('users').update({'token': fcmToken}).eq('id', userId);
 
-      // Listen token refresh
-      FirebaseMessaging.instance.onTokenRefresh.listen((newToken) async {
-        await client.from('users').update({'token': newToken}).eq('id', userId);
-      });
+  //     // Listen token refresh
+  //     FirebaseMessaging.instance.onTokenRefresh.listen((newToken) async {
+  //       await client.from('users').update({'token': newToken}).eq('id', userId);
+  //     });
 
-      print('FCM token saved for user $userId: $fcmToken');
-    } catch (e) {
-      print('Error saving FCM token: $e');
-    }
-  }
+  //     print('FCM token saved for user $userId: $fcmToken');
+  //   } catch (e) {
+  //     print('Error saving FCM token: $e');
+  //   }
+  // }
 }

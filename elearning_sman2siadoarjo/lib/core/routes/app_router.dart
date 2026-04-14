@@ -1,10 +1,10 @@
-import 'package:elearning_sman2siadoarjo/core/routes/routes_name.dart';
-import 'package:elearning_sman2siadoarjo/presentation/features/landing_page/screens/landing_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../presentation/features/auth/screen/login_screen.dart';
 import '../../presentation/features/init/splash_screen.dart';
+import '../../presentation/features/landing_page/screens/landing_page.dart';
+import 'routes_name.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(

@@ -1,4 +1,4 @@
-name: elearning_sman2siadoarjo
+name: elearning_sman2sidoarjo
 description: "A new Flutter project."
 
 publish_to: 'none'
@@ -24,7 +24,7 @@ dependencies:
   bcrypt: ^1.2.0
   flutter_dotenv: ^6.0.0
   shared_preferences: ^2.5.5
-  firebase_messaging: ^16.1.3
+  firebase_messaging: ^16.1.3 
 
 
 dev_dependencies:

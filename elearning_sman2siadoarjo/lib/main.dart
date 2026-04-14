@@ -1,5 +1,5 @@
-import 'package:elearning_sman2siadoarjo/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'core/routes/app_router.dart';
 import 'core/theme/app_theme.dart';
 
 void main() {

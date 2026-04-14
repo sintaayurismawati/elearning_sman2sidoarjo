@@ -1,7 +1,8 @@
 import 'dart:async';
-import 'package:elearning_sman2siadoarjo/presentation/features/init/role_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'role_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

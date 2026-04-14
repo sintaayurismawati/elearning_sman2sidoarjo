@@ -1,7 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
-import '../../../../core/helper/navigation_helper.dart';
-import '../../../../models/section_keys.dart';
-import 'dialogs/login_dialog.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});

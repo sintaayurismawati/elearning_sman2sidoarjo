@@ -97,6 +97,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         }
       });
     } catch (e) {
+      // ignore: avoid_print
       print('Reset password error: $e');
       setState(() {
         _errorMessage = 'Gagal reset password: ${e.toString()}';

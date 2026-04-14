@@ -1,7 +1,8 @@
-import 'package:elearning_sman2siadoarjo/core/enums/role_user_enum.dart';
-import 'package:elearning_sman2siadoarjo/core/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../../core/enums/role_user_enum.dart';
+import '../../../../../core/routes/routes_name.dart';
 
 class LoginDialog extends StatelessWidget {
   LoginDialog({super.key});

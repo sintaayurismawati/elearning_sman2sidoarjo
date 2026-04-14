@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:elearning_sman2siadoarjo/presentation/features/auth/screen/verify_otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../services/auth/auth_service.dart';
+import 'verify_otp_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
