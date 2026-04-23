@@ -40,19 +40,6 @@ class LoginDialog extends StatelessWidget {
     }
   }
 
-  String _getRoute(UserRole role) {
-    switch (role) {
-      case UserRole.admin:
-        return RoutesNames.login;
-      case UserRole.siswa:
-        return RoutesNames.login;
-      case UserRole.guru:
-        return RoutesNames.login;
-      case UserRole.staff:
-        return RoutesNames.login;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -97,9 +84,10 @@ class LoginDialog extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 15),
                     child: ElevatedButton(
                       onPressed: () {
-                        final route = _getRoute(option);
-
-                        context.go(route);
+                        context.go(
+                          RoutesNames.login,
+                          extra: option, // ✅ kirim enum UserRole
+                        );
 
                         Navigator.pop(context);
                       },

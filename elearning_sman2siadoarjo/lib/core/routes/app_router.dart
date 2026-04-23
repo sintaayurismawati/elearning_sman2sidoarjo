@@ -1,3 +1,4 @@
+import 'package:elearning_sman2sidoarjo/core/enums/role_user_enum.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,7 +21,10 @@ class AppRouter {
       ),
       GoRoute(
         path: RoutesNames.login,
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) {
+          final roleUser = state.extra as UserRole; // ambil extra
+          return LoginScreen(roleUser: roleUser);
+        },
       ),
     ],
   );

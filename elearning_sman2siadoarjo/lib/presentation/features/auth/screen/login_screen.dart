@@ -1,13 +1,15 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:elearning_sman2sidoarjo/core/enums/role_user_enum.dart';
 import 'package:flutter/material.dart';
-
 import '../../../shared_widgets/button/e_main_btn.dart';
 import '../../../shared_widgets/e_textfield_widget.dart';
 import 'forgot_pass_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final UserRole roleUser;
+
+  const LoginScreen({super.key, required this.roleUser});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

@@ -78,7 +78,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         MaterialPageRoute(builder: (context) => VerifyOtpScreen(email: email)),
       );
     } catch (e) {
-      print('Send OTP error: $e');
       setState(() {
         _errorMessage = 'Gagal mengirim OTP. Silakan coba lagi.';
         _loading = false;

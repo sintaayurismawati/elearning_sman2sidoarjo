@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
-import '../auth/screen/login_screen.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/enums/role_user_enum.dart';
+import '../../../core/routes/routes_name.dart';
 
 class RoleSelectionScreen extends StatelessWidget {
-  const RoleSelectionScreen({super.key});
+  RoleSelectionScreen({super.key});
 
-  final List<Map<String, dynamic>> roles = const [
+  final List<Map<String, dynamic>> roles = [
     {
+      'role': UserRole.siswa,
       'name': 'Siswa',
       'icon': Icons.school,
       'color': Color(0xFF2196F3),
       'description': 'Akses materi, tugas, dan ujian',
     },
     {
+      'role': UserRole.guru,
       'name': 'Guru',
       'icon': Icons.person,
       'color': Color(0xFF4CAF50),
       'description': 'Kelola kelas, tugas, dan nilai',
     },
     {
+      'role': UserRole.staff,
       'name': 'Staff Kurikulum',
       'icon': Icons.folder_special,
       'color': Color(0xFFFF9800),
       'description': 'Kelola kurikulum dan jadwal',
     },
     {
+      'role': UserRole.admin,
       'name': 'Admin',
       'icon': Icons.admin_panel_settings,
       'color': Color(0xFF9C27B0),
@@ -111,6 +117,7 @@ class RoleSelectionScreen extends StatelessWidget {
                   return _buildRoleCard(
                     context,
                     role['name'],
+                    role['role'],
                     role['icon'],
                     role['color'],
                     role['description'],
@@ -136,6 +143,7 @@ class RoleSelectionScreen extends StatelessWidget {
   Widget _buildRoleCard(
     BuildContext context,
     String roleName,
+    UserRole role,
     IconData icon,
     Color color,
     String description,
@@ -147,9 +155,9 @@ class RoleSelectionScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LoginScreen()),
+            context.push(
+              RoutesNames.login,
+              extra: role, // ✅ kirim enum
             );
           },
           borderRadius: BorderRadius.circular(20),

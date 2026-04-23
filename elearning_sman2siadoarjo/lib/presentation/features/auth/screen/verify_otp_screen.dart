@@ -86,7 +86,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         ),
       );
     } catch (e) {
-      print('Resend OTP error: $e');
       setState(() {
         _errorMessage = 'Gagal mengirim ulang OTP. Silakan coba lagi.';
       });
@@ -160,7 +159,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         ),
       );
     } catch (e) {
-      print('Verify OTP error: $e');
       setState(() {
         _errorMessage = 'Gagal verifikasi OTP: ${e.toString()}';
         _loading = false;
