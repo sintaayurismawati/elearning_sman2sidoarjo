@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import '../../../controllers/mata_pelajaran_riverpod.dart';
-import '../../../shared_widgets/staff/dialog_konfirmasi_widget.dart';
-import '../../../shared_widgets/staff/dialog_success_widget.dart';
-import '../../../shared_widgets/staff/filter_dropdown.dart';
-import '../../../shared_widgets/staff/header2_widget.dart';
-import '../../../shared_widgets/staff/header_widget.dart';
-import '../../../shared_widgets/staff/search_textfield_widget.dart';
-import '../../../shared_widgets/staff/table_cell.dart';
-import '../../../shared_widgets/staff/table_header_cell.dart';
+import '../../../controllers/staff/mata_pelajaran_riverpod.dart';
+import '../../../shared_widgets/general_old/dialog_konfirmasi_widget.dart';
+import '../../../shared_widgets/general_old/dialog_success_widget.dart';
+import '../../../shared_widgets/general_old/filter_dropdown.dart';
+import '../../../shared_widgets/general_old/header2_widget.dart';
+import '../../../shared_widgets/general_old/header_widget.dart';
+import '../../../shared_widgets/general_old/search_textfield_widget.dart';
+import '../../../shared_widgets/general_old/table_cell.dart';
+import '../../../shared_widgets/general_old/table_header_cell.dart';
 import 'widget/dialog_tambah_or_edit_mapel.dart';
 
 class MataPelajaranScreen extends ConsumerStatefulWidget {

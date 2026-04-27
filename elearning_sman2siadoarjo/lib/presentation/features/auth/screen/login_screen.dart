@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/routes/routes_name.dart';
 import '../../../shared_widgets/button/e_main_btn.dart';
-import '../../../shared_widgets/e_textfield_widget.dart';
+import '../../../shared_widgets/textfield/e_textfield_widget.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_state.dart';
 import 'forgot_pass_screen.dart';

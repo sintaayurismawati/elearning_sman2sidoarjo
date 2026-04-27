@@ -4,14 +4,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../models/staff/filtering_model.dart';
 import '../../../../models/staff/nilai_latsol_model.dart';
-import '../../../controllers/nilai_latsol/nilai_latsol_riverpod.dart';
-import '../../../shared_widgets/staff/dialog_error_widget.dart';
-import '../../../shared_widgets/staff/filter_dropdown.dart';
-import '../../../shared_widgets/staff/header2_widget.dart';
-import '../../../shared_widgets/staff/header_widget.dart';
-import '../../../shared_widgets/staff/search_textfield_widget.dart';
-import '../../../shared_widgets/staff/table_cell.dart';
-import '../../../shared_widgets/staff/table_header_cell.dart';
+import '../../../controllers/staff/nilai_latsol/nilai_latsol_riverpod.dart';
+import '../../../shared_widgets/general_old/dialog_error_widget.dart';
+import '../../../shared_widgets/general_old/filter_dropdown.dart';
+import '../../../shared_widgets/general_old/header2_widget.dart';
+import '../../../shared_widgets/general_old/header_widget.dart';
+import '../../../shared_widgets/general_old/search_textfield_widget.dart';
+import '../../../shared_widgets/general_old/table_cell.dart';
+import '../../../shared_widgets/general_old/table_header_cell.dart';
 
 class NilaiLatsolScreen extends ConsumerStatefulWidget {
   const NilaiLatsolScreen({super.key});

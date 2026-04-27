@@ -4,12 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../../models/staff/data_guru_model.dart';
-import '../../../../controllers/data_guru_riverpod.dart';
-import '../../../../controllers/mapel_by_jenjang_riverpod.dart';
-import '../../../../shared_widgets/staff/dialog_error_widget.dart';
-import '../../../../shared_widgets/staff/dialog_success_widget.dart';
-import '../../../../shared_widgets/staff/rich_textfield_widget.dart';
-import '../../../../shared_widgets/staff/textfield_widget.dart';
+import '../../../../controllers/staff/data_guru_riverpod.dart';
+import '../../../../controllers/staff/mapel_by_jenjang_riverpod.dart';
+import '../../../../shared_widgets/general_old/dialog_error_widget.dart';
+import '../../../../shared_widgets/general_old/dialog_success_widget.dart';
+import '../../../../shared_widgets/general_old/rich_textfield_widget.dart';
+import '../../../../shared_widgets/general_old/textfield_widget.dart';
 
 class DialogTambahOrEditGuru extends ConsumerStatefulWidget {
   final Guru? dataGuru;

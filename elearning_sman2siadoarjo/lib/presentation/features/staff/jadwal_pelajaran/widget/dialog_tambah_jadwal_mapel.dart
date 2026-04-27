@@ -6,15 +6,15 @@ import 'package:material_symbols_icons/symbols.dart';
 import '../../../../../models/staff/filtering_model.dart';
 import '../../../../../models/staff/jadwal_pelajaran_model.dart';
 import '../../../../../models/staff/kelas_aktif_model.dart';
-import '../../../../controllers/jadwal_mapel/guru_tersedia_riverpod.dart';
-import '../../../../controllers/jadwal_mapel/mapel_by_kelas_hari_riverpod.dart';
-import '../../../../controllers/jadwal_mapel/waktu_tersedia_riverpod.dart';
-import '../../../../controllers/jadwal_mapel_riverpod.dart';
-import '../../../../controllers/kelas_aktif_riverpod.dart';
-import '../../../../shared_widgets/staff/dialog_error_widget.dart';
-import '../../../../shared_widgets/staff/dialog_success_widget.dart';
-import '../../../../shared_widgets/staff/dropdown_widget.dart';
-import '../../../../shared_widgets/staff/textfield_widget.dart';
+import '../../../../controllers/staff/jadwal_mapel/guru_tersedia_riverpod.dart';
+import '../../../../controllers/staff/jadwal_mapel/mapel_by_kelas_hari_riverpod.dart';
+import '../../../../controllers/staff/jadwal_mapel/waktu_tersedia_riverpod.dart';
+import '../../../../controllers/staff/jadwal_mapel_riverpod.dart';
+import '../../../../controllers/staff/kelas_aktif_riverpod.dart';
+import '../../../../shared_widgets/general_old/dialog_error_widget.dart';
+import '../../../../shared_widgets/general_old/dialog_success_widget.dart';
+import '../../../../shared_widgets/general_old/dropdown_widget.dart';
+import '../../../../shared_widgets/general_old/textfield_widget.dart';
 
 class DialogTambahOrEditJadwalMapel extends ConsumerStatefulWidget {
   final JadwalMataPelajaran? dataJadwalMapel;

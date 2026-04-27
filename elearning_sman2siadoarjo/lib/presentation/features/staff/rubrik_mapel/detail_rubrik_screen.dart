@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../controllers/rubrik_mapel/rubrik_mapel_riverpod.dart';
+import '../../../controllers/staff/rubrik_mapel/rubrik_mapel_riverpod.dart';
 
 class RubrikDetailScreen extends ConsumerStatefulWidget {
   final int lingkupMateriId;

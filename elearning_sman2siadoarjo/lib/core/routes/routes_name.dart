@@ -20,4 +20,18 @@ class RoutesNames {
   static const String nlaiUjianSumatif = '/main/nilaiUjianSumatif';
   static const String sumatifLingkupMateri = '/main/sumatifLingkupMateri';
   static const String rangeNilaiKategori = '/main/rangeNilaiKategori';
+
+  // GURU
+  static const String jadwalMengajar = '/main/jadwalMengajar';
+  static const String kelompokBelajar = '/main/kelompokBelajar';
+  // sampe sini
+  static const String nilaiAkhirKelas = '/main/nilaiAkhirKelas';
+  static const String nilaiLatsolKelas = '/main/nilaiLatsolKelas';
+  static const String nilaiTugasKelas = '/main/nilaiTugasKelas';
+  static const String nilaiUjianSumatifKelas = '/main/nilaiUjianSumatifKelas';
+  static const String sumatifLingkupMateriKelas =
+      '/main/sumatifLingkupMateriKelas';
+  static const String rubrikMapelKelas = '/main/rubrikMapelKelas';
+  static const String kelolaRubrikMapel = '/main/kelolaRubrikMapel';
+  static const String detailRubrikMapel = '/main/detailRubrikMapel';
 }

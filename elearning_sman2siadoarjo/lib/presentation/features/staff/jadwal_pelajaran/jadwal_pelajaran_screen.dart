@@ -7,15 +7,15 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../models/staff/filtering_model.dart';
 import '../../../../models/staff/jadwal_pelajaran_model.dart';
-import '../../../controllers/jadwal_mapel_riverpod.dart';
-import '../../../shared_widgets/staff/dialog_error_widget.dart';
-import '../../../shared_widgets/staff/dialog_konfirmasi_widget.dart';
-import '../../../shared_widgets/staff/dialog_success_widget.dart';
-import '../../../shared_widgets/staff/filter_dropdown_widget_2.dart';
-import '../../../shared_widgets/staff/header2_widget.dart';
-import '../../../shared_widgets/staff/header_widget.dart';
-import '../../../shared_widgets/staff/table_cell.dart';
-import '../../../shared_widgets/staff/table_header_cell.dart';
+import '../../../controllers/staff/jadwal_mapel_riverpod.dart';
+import '../../../shared_widgets/general_old/dialog_error_widget.dart';
+import '../../../shared_widgets/general_old/dialog_konfirmasi_widget.dart';
+import '../../../shared_widgets/general_old/dialog_success_widget.dart';
+import '../../../shared_widgets/general_old/filter_dropdown_widget_2.dart';
+import '../../../shared_widgets/general_old/header2_widget.dart';
+import '../../../shared_widgets/general_old/header_widget.dart';
+import '../../../shared_widgets/general_old/table_cell.dart';
+import '../../../shared_widgets/general_old/table_header_cell.dart';
 import 'widget/dialog_tambah_jadwal_mapel.dart';
 
 class JadwalPelajaranScreen extends ConsumerStatefulWidget {

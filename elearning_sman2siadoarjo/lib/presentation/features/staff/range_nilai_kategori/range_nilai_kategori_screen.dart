@@ -3,13 +3,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../models/staff/range_nilai_kategori_model.dart';
-import '../../../controllers/range_nilai_kategori/range_nilai_kategori_riverpod.dart';
-import '../../../shared_widgets/staff/dialog_error_widget.dart';
-import '../../../shared_widgets/staff/dialog_konfirmasi_widget.dart';
-import '../../../shared_widgets/staff/header2_widget.dart';
-import '../../../shared_widgets/staff/header_widget.dart';
-import '../../../shared_widgets/staff/table_cell.dart';
-import '../../../shared_widgets/staff/table_header_cell.dart';
+import '../../../controllers/staff/range_nilai_kategori/range_nilai_kategori_riverpod.dart';
+import '../../../shared_widgets/general_old/dialog_error_widget.dart';
+import '../../../shared_widgets/general_old/dialog_konfirmasi_widget.dart';
+import '../../../shared_widgets/general_old/header2_widget.dart';
+import '../../../shared_widgets/general_old/header_widget.dart';
+import '../../../shared_widgets/general_old/table_cell.dart';
+import '../../../shared_widgets/general_old/table_header_cell.dart';
 import 'widget/dialog_tambah_kategori.dart';
 
 class RangeNilaiKategoriScreen extends ConsumerStatefulWidget {

@@ -3,11 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../../models/staff/filtering_model.dart';
-import '../../../../controllers/kelas_riverpod.dart';
-import '../../../../controllers/walas_tersedia_riverpod.dart';
-import '../../../../shared_widgets/staff/dialog_error_widget.dart';
-import '../../../../shared_widgets/staff/dialog_success_widget.dart';
-import '../../../../shared_widgets/staff/dropdown_widget.dart';
+import '../../../../controllers/staff/kelas_riverpod.dart';
+import '../../../../controllers/staff/walas_tersedia_riverpod.dart';
+import '../../../../shared_widgets/general_old/dialog_error_widget.dart';
+import '../../../../shared_widgets/general_old/dialog_success_widget.dart';
+import '../../../../shared_widgets/general_old/dropdown_widget.dart';
 
 class DialogTambahKelas extends ConsumerStatefulWidget {
   const DialogTambahKelas({super.key});
