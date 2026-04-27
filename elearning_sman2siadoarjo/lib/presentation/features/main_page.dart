@@ -8,7 +8,6 @@ import '../../core/routes/routes_name.dart';
 import '../../services/auth/auth_service.dart';
 import 'auth/cubit/auth_cubit.dart';
 
-
 class MainPage extends StatefulWidget {
   final Widget child;
 
@@ -143,7 +142,41 @@ class _MainPageState extends State<MainPage> {
         ];
 
       case UserRole.staff:
-        return [_Menu("Dashboard", Icons.dashboard, "/main/dashboard")];
+        return [
+          _Menu("Data Guru", Icons.person, RoutesNames.dataGuru),
+          _Menu("Data Siswa", Icons.person_2, RoutesNames.dataSiswa),
+          _Menu("Kelas", Icons.class_, RoutesNames.kelas),
+          _Menu("Mata Pelajaran", Icons.subject, RoutesNames.mataPelajaran),
+          _Menu(
+            "Jadwal Akademik",
+            Icons.calendar_month,
+            RoutesNames.jadwalAkademik,
+          ),
+          _Menu(
+            "Jadwal Pelajaran",
+            Icons.schedule,
+            RoutesNames.jadwalPelajaran,
+          ),
+          _Menu(
+            "Rubrik Mata Pelajaran",
+            Icons.table_chart,
+            RoutesNames.rubrikMapel,
+          ),
+          _Menu("Tahun Ajaran", Icons.book, RoutesNames.tahunAjaran),
+          _Menu("Nilai Latihan Soal", Icons.score, RoutesNames.nilaiLatsol),
+          _Menu("Nilai Tugas", Icons.score, RoutesNames.nilaiTugas),
+          _Menu(
+            "Sumatif Lingkup Materi",
+            Icons.score,
+            RoutesNames.sumatifLingkupMateri,
+          ),
+          _Menu(
+            "Nilai Ujian Sumatif",
+            Icons.score,
+            RoutesNames.nlaiUjianSumatif,
+          ),
+          _Menu("Nilai Akhir", Icons.score, RoutesNames.nilaiAkhir),
+        ];
 
       case UserRole.guru:
         return [

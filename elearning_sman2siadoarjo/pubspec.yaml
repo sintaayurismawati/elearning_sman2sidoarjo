@@ -26,12 +26,27 @@ dependencies:
   shared_preferences: ^2.5.5
   firebase_messaging: ^16.1.3
   equatable: ^2.0.8
+  intl: ^0.20.2
+  material_symbols_icons: ^4.2928.1
+  dropdown_button2: ^3.0.0
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  hooks_riverpod: ^2.6.1
+  flutter_hooks: ^0.21.2
+  file_picker: ^11.0.2
+  excel: ^4.0.6
+  syncfusion_flutter_xlsio: ^29.2.11
+  universal_html: ^2.2.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^6.0.0
+  riverpod_generator: ^2.6.5
+  build_runner: ^2.5.4
+  custom_lint: ^0.7.5
+  riverpod_lint: ^2.6.5
 
 flutter:
   uses-material-design: true
