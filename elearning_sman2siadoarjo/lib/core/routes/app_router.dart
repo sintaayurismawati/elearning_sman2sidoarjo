@@ -19,7 +19,7 @@ import '../../presentation/features/auth/screen/login_screen.dart';
 import '../../presentation/features/init/splash_screen.dart';
 import '../../presentation/features/landing_page/screens/landing_page.dart';
 import '../../presentation/features/main_page.dart';
-import '../../services/auth/auth_service.dart';
+import '../helper/shared_pref_helper.dart';
 import 'routes_name.dart';
 
 class AppRouter {
@@ -28,7 +28,7 @@ class AppRouter {
 
     /// 🔥 TARUH DI SINI
     redirect: (context, state) async {
-      final role = await SupabaseService.getCurrentUserRole();
+      final role = await SharedPrefHelper.getRole();
 
       final isLoggedIn = role != null;
       final isLoginPage = state.matchedLocation == RoutesNames.login;
@@ -70,10 +70,10 @@ class AppRouter {
           return MainPage(child: child);
         },
         routes: [
-          GoRoute(
-            path: RoutesNames.main, // ✅ TAMBAH INI
-            redirect: (_, _) => RoutesNames.dataGuru, // auto ke dashboard
-          ),
+          // GoRoute(
+          //   path: RoutesNames.main, // ✅ TAMBAH INI
+          //   redirect: (_, _) => RoutesNames.dataGuru, // auto ke dashboard
+          // ),
           GoRoute(
             path: RoutesNames.dataGuru,
             builder: (context, state) => const DataGuruScreen(),

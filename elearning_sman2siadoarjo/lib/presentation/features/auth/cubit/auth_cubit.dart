@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/enums/role_user_enum.dart';
+import '../../../../core/helper/shared_pref_helper.dart';
 import '../../../../services/auth/auth_service.dart';
 import 'auth_state.dart';
 
@@ -27,10 +28,9 @@ class AuthCubit extends Cubit<AuthState> {
         return;
       }
 
-      final roleString = result['roles'][0];
+      final roleString = result['role'] as String;
 
-      /// 🔥 pakai extension kamu di enum
-      final role = roleString.toString().toUserRole();
+      final role = roleString.toUserRole();
 
       emit(AuthAuthenticated(role));
     } catch (e) {
@@ -45,7 +45,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
 
     try {
-      final roleString = await SupabaseService.getCurrentUserRole();
+      final roleString = await SharedPrefHelper.getRole();
 
       if (roleString == null) {
         emit(AuthUnauthenticated());

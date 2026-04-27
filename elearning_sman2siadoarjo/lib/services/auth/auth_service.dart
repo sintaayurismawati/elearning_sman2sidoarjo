@@ -5,6 +5,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../core/helper/shared_pref_helper.dart';
+
 class SupabaseService {
   static final client = Supabase.instance.client;
 
@@ -30,65 +32,22 @@ class SupabaseService {
         return null;
       }
 
-      final userRole = userRes['role'];
-      if (userRole == null) return null;
+      final role = userRes['role'];
+      if (role == null) return null;
 
-      final roles = [userRole.toString()];
-
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('user_id', userId);
-      await prefs.setStringList(
-        'user_roles',
-        userRole is List<String> ? userRole : [userRole.toString()],
-      );
-      await prefs.setString('auth_token', 'local-login');
+      // 👉 SIMPAN KE LOCAL VIA HELPER
+      await SharedPrefHelper.saveUserId(userId);
+      await SharedPrefHelper.saveRole(role.toString());
+      await SharedPrefHelper.saveAuthToken('local-login');
 
       // Simpan token FCM
       // await SupabaseService.saveFcmToken(userId);
 
-      return {'user_id': userId, 'roles': roles};
+      return {'user_id': userId, 'role': role.toString()};
     } catch (e) {
       print('Login error: $e');
       return null;
     }
-  }
-
-  /// Ambil semua role user berdasarkan userId
-  static Future<List<String>> getUserRoles(String userId) async {
-    try {
-      final userRes = await client
-          .from('users')
-          .select('role')
-          .eq('id', userId)
-          .maybeSingle();
-
-      final role = userRes?['role'];
-      if (role == null) return [];
-
-      return [role.toString()];
-    } catch (e) {
-      print('Get roles error: $e');
-      return [];
-    }
-  }
-
-  /// Ambil role utama (urutan pertama)
-  static Future<String?> getPrimaryRole(String userId) async {
-    final roles = await getUserRoles(userId);
-    return roles.isNotEmpty ? roles.first : null;
-  }
-
-  /// Ambil role utama dari SharedPreferences
-  static Future<String?> getCurrentUserRole() async {
-    final prefs = await SharedPreferences.getInstance();
-    final roles = prefs.getStringList('user_roles');
-    return (roles != null && roles.isNotEmpty) ? roles.first : null;
-  }
-
-  /// Ambil user ID dari SharedPreferences
-  static Future<String?> getCurrentUserId() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('user_id');
   }
 
   /// Logout user dan clear semua session lokal

@@ -1,3 +1,4 @@
+import 'package:elearning_sman2sidoarjo/core/helper/shared_pref_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   Future<void> _loadRole() async {
-    final roleString = await SupabaseService.getCurrentUserRole();
+    final roleString = await SharedPrefHelper.getRole();
 
     if (roleString != null) {
       setState(() {
@@ -137,8 +138,8 @@ class _MainPageState extends State<MainPage> {
     switch (role) {
       case UserRole.admin:
         return [
-          // _Menu("Dashboard", Icons.dashboard, RoutesNames.dashboard),
-          _Menu("Manajemen User", Icons.people, "/main/dashboard"),
+          _Menu("Data Siswa", Icons.person_2, RoutesNames.dataSiswa),
+          _Menu("Kelas", Icons.class_, RoutesNames.kelas),
         ];
 
       case UserRole.staff:
@@ -180,14 +181,26 @@ class _MainPageState extends State<MainPage> {
 
       case UserRole.guru:
         return [
-          // _Menu("Dashboard", Icons.dashboard, RoutesNames.dashboard),
-          _Menu("Kelas", Icons.menu_book, RoutesNames.kelas),
+          _Menu(
+            "Jadwal Akademik",
+            Icons.calendar_month,
+            RoutesNames.jadwalAkademik,
+          ),
+          _Menu(
+            "Jadwal Pelajaran",
+            Icons.schedule,
+            RoutesNames.jadwalPelajaran,
+          ),
         ];
 
       case UserRole.siswa:
         return [
-          _Menu("Dashboard", Icons.dashboard, "/main/dashboard"),
-          _Menu("Kelas", Icons.menu_book, "/main/kelas"),
+          _Menu(
+            "Rubrik Mata Pelajaran",
+            Icons.table_chart,
+            RoutesNames.rubrikMapel,
+          ),
+          _Menu("Tahun Ajaran", Icons.book, RoutesNames.tahunAjaran),
         ];
     }
   }

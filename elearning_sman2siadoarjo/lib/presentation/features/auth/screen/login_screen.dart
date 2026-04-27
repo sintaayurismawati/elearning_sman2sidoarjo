@@ -39,7 +39,15 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state is AuthAuthenticated) {
             // context.pushReplacementNamed(RoutesNames.main, extra: state.role);
-            context.go(RoutesNames.main);
+            if (state.role == UserRole.staff) {
+              context.go(RoutesNames.dataGuru);
+            } else if (state.role == UserRole.admin) {
+              context.go(RoutesNames.dataSiswa);
+            } else if (state.role == UserRole.guru) {
+              context.go(RoutesNames.jadwalPelajaran);
+            } else if (state.role == UserRole.siswa) {
+              context.go(RoutesNames.mataPelajaran);
+            }
           }
 
           if (state is AuthFailure) {
