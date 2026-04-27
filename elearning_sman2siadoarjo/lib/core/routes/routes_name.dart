@@ -4,7 +4,6 @@ class RoutesNames {
   static const String splashScreen = '/splash';
   static const String roleScreen = '/role';
   static const String main = '/main';
-  static const String dashboard = '/main/dashboard';
 
   // STAFF
   static const String dataGuru = '/main/dataGuru';

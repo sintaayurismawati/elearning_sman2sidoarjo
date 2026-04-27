@@ -137,7 +137,7 @@ class _MainPageState extends State<MainPage> {
     switch (role) {
       case UserRole.admin:
         return [
-          _Menu("Dashboard", Icons.dashboard, RoutesNames.dashboard),
+          // _Menu("Dashboard", Icons.dashboard, RoutesNames.dashboard),
           _Menu("Manajemen User", Icons.people, "/main/dashboard"),
         ];
 
@@ -180,7 +180,7 @@ class _MainPageState extends State<MainPage> {
 
       case UserRole.guru:
         return [
-          _Menu("Dashboard", Icons.dashboard, RoutesNames.dashboard),
+          // _Menu("Dashboard", Icons.dashboard, RoutesNames.dashboard),
           _Menu("Kelas", Icons.menu_book, RoutesNames.kelas),
         ];
 

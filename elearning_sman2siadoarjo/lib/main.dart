@@ -1,6 +1,6 @@
+import 'package:elearning_sman2sidoarjo/core/network/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/routes/app_router.dart';
@@ -11,12 +11,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// load .env
-  await dotenv.load(fileName: ".env");
+  // await dotenv.load(fileName: ".env");
 
   /// 🔥 INIT SUPABASE (WAJIB)
   await Supabase.initialize(
-    url: dotenv.env['SUPABASE_URL'] ?? '',
-    anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
+    url: AppConfig.supabaseUrl,
+    anonKey: AppConfig.supabaseAnonKey,
   );
 
   runApp(

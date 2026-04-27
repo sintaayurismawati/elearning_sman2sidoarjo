@@ -2,15 +2,11 @@
 
 import 'package:bcrypt/bcrypt.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
-  static final client = SupabaseClient(
-    dotenv.env['SUPABASE_URL'] ?? '',
-    dotenv.env['SUPABASE_ANON_KEY'] ?? '',
-  );
+  static final client = Supabase.instance.client;
 
   /// Login dengan NIP/NUPTK/NISN dan password bcrypt
   static Future<Map<String, dynamic>?> loginWithIdentifier(
