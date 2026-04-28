@@ -315,7 +315,10 @@ class _EditMateriScreenState extends ConsumerState<EditMateriScreen> {
                                 p_controller: deskripsiController,
                               ),
                               const SizedBox(height: 20),
-                              FileTextFieldWidget(addFileAction: _pilihFile),
+                              FileTextFieldWidget(
+                                addFileAction: _pilihFile,
+                                title: 'Pilih File',
+                              ),
                               const SizedBox(height: 20),
                               // Tampilkan file yang sudah ada
                               Row(

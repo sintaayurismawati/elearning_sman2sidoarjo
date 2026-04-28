@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously
 
+// import 'dart:convert';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -10,102 +11,36 @@ import 'package:go_router/go_router.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:universal_html/html.dart' as html;
 
-import '../../../../../models/guru/filtering_model.dart';
-import '../../../../controllers/guru/tugas/tugas_kelas_riverpod.dart';
+import '../../../../controllers/siswa/tugas/tugas_riverpod.dart';
 import '../../../../shared_widgets/general_old/dialog_error_widget.dart';
 import '../../../../shared_widgets/general_old/dialog_success_widget.dart';
-import '../../../../shared_widgets/general_old/dropdown2_widget.dart';
 import '../../../../shared_widgets/general_old/file_textfield_widget.dart';
 import '../../../../shared_widgets/general_old/header2_widget.dart';
-import '../../../../shared_widgets/general_old/rich_textfield_widget.dart';
-import '../../../../shared_widgets/general_old/textfield2_widget.dart';
 
-class TambahTugasScreen extends ConsumerStatefulWidget {
-  const TambahTugasScreen({super.key});
+class PengumpulanTugasScreen extends ConsumerStatefulWidget {
+  const PengumpulanTugasScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _TambahTugasScreenState();
+      _PengumpulanTugasScreenState();
 }
 
-class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
+class _PengumpulanTugasScreenState
+    extends ConsumerState<PengumpulanTugasScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // final quillFieldKey = GlobalKey<QuillTextfiledWidgetState>();
-  // late quill.QuillController _tugasController;
-
-  final TextEditingController judulController = TextEditingController();
-  final TextEditingController jmlPengumpulan = TextEditingController();
-  final TextEditingController deskripsiController = TextEditingController();
-
-  String? selectedLingkupMateri;
-  String? selectedTujuanPembelajaran;
-  // String? selectedTipeTugas;
-  String? selectedStatusTugas;
-  int? selectedLingkupMateriId;
-  int? selectedTujuanPembelajaranId;
-  DateTime? selectedDeadline;
-
   List<PlatformFile> pickedFiles = [];
-  List<LingkupMateri> lingkupMateriList = [];
-  List<Map<String, dynamic>> tujuanPembelajaranList = [];
 
   bool isSubmitted = false;
 
   @override
   void initState() {
     super.initState();
-    // _tugasController = quill.QuillController.basic();
-
-    Future.microtask(() async {
-      final list = await ref
-          .read(tugasKelasRiverpodProvider.notifier)
-          .fetchLingkupMateri();
-
-      if (!mounted) return;
-      setState(() {
-        lingkupMateriList = list;
-      });
-    });
   }
 
   @override
   void dispose() {
-    judulController.dispose();
     super.dispose();
-  }
-
-  String formatDateTime(DateTime dt) {
-    return "${dt.year}-${dt.month.toString().padLeft(2, '0')}-${dt.day.toString().padLeft(2, '0')} ${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}:00";
-  }
-
-  Future<void> _selectDateTime() async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2100),
-    );
-
-    if (pickedDate != null) {
-      TimeOfDay? pickedTime = await showTimePicker(
-        context: context,
-        initialTime: TimeOfDay.now(),
-      );
-
-      if (pickedTime != null) {
-        setState(() {
-          selectedDeadline = DateTime(
-            pickedDate.year,
-            pickedDate.month,
-            pickedDate.day,
-            pickedTime.hour,
-            pickedTime.minute,
-            0, // Set detik menjadi 0
-          );
-        });
-      }
-    }
   }
 
   Future<void> _pilihFile() async {
@@ -294,14 +229,18 @@ class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Header2Widget(
-                          header2Title: "Tambah Penugasan Baru",
-                          subtitle:
-                              "Lengkapi form berikut untuk menambahkan tugas.",
+                          header2Title: "Pengumpulan Tugas",
+                          subtitle: "Tambahkan file untuk mengumpulkan tugas.",
                         ),
                         const SizedBox(height: 10),
                         // const Divider(color: Colors.black, thickness: 1),
                         Container(
-                          padding: EdgeInsets.all(20),
+                          padding: EdgeInsets.only(
+                            left: 20,
+                            right: 20,
+                            bottom: 20,
+                            top: 0,
+                          ),
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: Colors.grey[200]!, // warna border
@@ -314,211 +253,18 @@ class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TextField2GeneralWidget(
-                                title: "Judul Tugas",
-                                hintText: "Masukkan judul Tugas",
-                                pController: judulController,
-                                isRequired: true,
-                              ),
-                              const SizedBox(height: 20),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Dropdown2GeneralWidget(
-                                      pTitle: 'Lingkup Materi',
-                                      pHintText: 'Pilih lingkup materi',
-                                      valueParams: selectedLingkupMateri,
-                                      pItems: lingkupMateriList
-                                          .map((e) => e.judulLM)
-                                          .toList(),
-                                      pOnChanged: (value) {
-                                        setState(() {
-                                          selectedLingkupMateri = value;
-                                          final selectedObj = lingkupMateriList
-                                              .firstWhere(
-                                                (e) => e.judulLM == value,
-                                              );
-                                          selectedLingkupMateriId =
-                                              selectedObj.lingkupMateriId;
-
-                                          // Ambil tujuan dari item yang dipilih
-                                          tujuanPembelajaranList =
-                                              selectedObj.tujuanPembelajaran;
-                                          selectedTujuanPembelajaran = null;
-                                          selectedTujuanPembelajaranId = null;
-                                        });
-                                      },
-                                      isRequired: true,
-                                      isSubmitted: isSubmitted,
-                                    ),
-                                  ),
-                                  SizedBox(width: 20),
-                                  Expanded(
-                                    child: Dropdown2GeneralWidget(
-                                      pTitle: "Tujuan Pembelajaran",
-                                      pHintText: "Pilih tujuan pembelajaran",
-                                      valueParams: selectedTujuanPembelajaran,
-                                      pItems: tujuanPembelajaranList
-                                          .map((e) => e['judul'] as String)
-                                          .toList(),
-                                      pOnChanged: (value) {
-                                        setState(() {
-                                          selectedTujuanPembelajaran = value;
-
-                                          final selectedTP =
-                                              tujuanPembelajaranList.firstWhere(
-                                                (e) => e['judul'] == value,
-                                              );
-
-                                          selectedTujuanPembelajaranId =
-                                              selectedTP['id']; // kalau butuh id
-                                        });
-                                      },
-                                      isRequired: true,
-                                      isSubmitted: isSubmitted,
-                                    ),
-                                  ),
-                                  SizedBox(width: 20),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Deadline Tugas *",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        Container(
-                                          width: double.infinity,
-                                          // padding: EdgeInsets.symmetric(
-                                          //   horizontal: 10,
-                                          //   vertical: 10,
-                                          // ),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: Colors.grey,
-                                            ),
-                                            borderRadius: BorderRadius.circular(
-                                              5,
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  selectedDeadline != null
-                                                      ? "${selectedDeadline!.day}/${selectedDeadline!.month}/${selectedDeadline!.year} ${selectedDeadline!.hour}:${selectedDeadline!.minute.toString().padLeft(2, '0')}"
-                                                      : "Pilih tanggal dan waktu",
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    color:
-                                                        selectedDeadline != null
-                                                        ? Colors.black
-                                                        : Colors.grey,
-                                                  ),
-                                                ),
-                                              ),
-                                              IconButton(
-                                                icon: Icon(
-                                                  Icons.calendar_today,
-                                                  size: 16,
-                                                ),
-                                                onPressed: _selectDateTime,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        if (isSubmitted &&
-                                            selectedDeadline == null)
-                                          Text(
-                                            "Deadline harus diisi",
-                                            style: TextStyle(
-                                              color: Colors.red,
-                                              fontSize: 12,
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  // Expanded(
-                                  //   child:
-                                  // Dropdown2GeneralWidget(
-                                  //   pTitle: "Tipe Tugas",
-                                  //   pHintText: "Pilih tipe tugas",
-                                  //   valueParams: selectedTipeTugas,
-                                  //   pItems: ['Individu', 'Kelompok'],
-                                  //   pOnChanged: (value) {
-                                  //     setState(() {
-                                  //       selectedTipeTugas = value;
-                                  //     });
-                                  //   },
-                                  //   isRequired: true,
-                                  //   isSubmitted: isSubmitted,
-                                  // ),
-                                  // ),
-                                  // SizedBox(width: 20),
-                                  Expanded(
-                                    child: Dropdown2GeneralWidget(
-                                      pTitle: "Status Tugas",
-                                      pHintText: "Pilih status tugas",
-                                      valueParams: selectedStatusTugas,
-                                      pItems: ['Visible', 'Hide'],
-                                      pOnChanged: (value) {
-                                        setState(() {
-                                          selectedStatusTugas = value;
-                                        });
-                                      },
-                                      isRequired: true,
-                                      isSubmitted: isSubmitted,
-                                    ),
-                                  ),
-                                  // SizedBox(width: 20),
-                                  // Expanded(
-                                  //   child: TextField2GeneralWidget(
-                                  //     title: "Batas jumlah file",
-                                  //     hintText:
-                                  //         "Batas jumlah file yang dikumpulkan",
-                                  //     pController: jmlPengumpulan,
-                                  //     isRequired: true,
-                                  //   ),
-                                  // ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              // QuillTextfiledWidget(
-                              //   key: quillFieldKey,
-                              //   textController: _tugasController,
-                              //   isRequired: true,
-                              // ),
-                              RichTextFieldGeneralWidget(
-                                title: "Deskripsi Tugas",
-                                hintText: "Masukkan deskripsi tugas",
-                                p_controller: deskripsiController,
-                                isRequired: true,
-                                pMinLines: 10,
-                              ),
-                              const SizedBox(height: 20),
                               FileTextFieldWidget(
+                                title: "",
                                 addFileAction: _pilihFile,
-                                title: 'Pilih File',
                               ),
                               const SizedBox(height: 20),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  // SizedBox(
+                                  //   width:
+                                  //       MediaQuery.of(context).size.width * 0.1,
+                                  // ),
                                   if (pickedFiles.isNotEmpty)
                                     Expanded(
                                       child: Column(
@@ -589,7 +335,7 @@ class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
                                     ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 20),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
@@ -605,28 +351,13 @@ class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
                                       //     quillFieldKey.currentState!
                                       //         .validate();
 
-                                      if (judulController.text.trim().isEmpty ||
-                                          // jmlPengumpulan.text.trim().isEmpty ||
-                                          deskripsiController.text
-                                              .trim()
-                                              .isEmpty ||
-                                          // _tugasController.document
-                                          //     .toPlainText()
-                                          //     .trim()
-                                          //     .isEmpty ||
-                                          // !isMateriValid ||
-                                          selectedLingkupMateriId == null ||
-                                          selectedTujuanPembelajaranId ==
-                                              null ||
-                                          // selectedTipeTugas == null ||
-                                          selectedStatusTugas == null ||
-                                          selectedDeadline == null) {
+                                      if (pickedFiles.isEmpty) {
                                         showDialog(
                                           context: context,
                                           builder: (context) =>
                                               const DialogErrorWidget(
                                                 errorText:
-                                                    "Semua field harus diisi dan pilih minimal 1 mata pelajaran",
+                                                    "Belum ada file yang ditambahkan",
                                               ),
                                         );
                                         return;
@@ -664,34 +395,14 @@ class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
                                               .map((f) => f.name)
                                               .toList();
 
-                                          // ✅ Simpan rich text Quill dalam format Delta JSON
-                                          // final deskripsiJson = jsonEncode(
-                                          //   _tugasController.document
-                                          //       .toDelta()
-                                          //       .toJson(),
-                                          // );
-
                                           final success = await ref
                                               .read(
                                                 tugasKelasRiverpodProvider
                                                     .notifier,
                                               )
-                                              .addTugas(
-                                                judul: judulController.text,
-                                                // deskripsi: deskripsiJson,
-                                                deskripsi:
-                                                    deskripsiController.text,
+                                              .submitTugas(
                                                 fileBytes: fileBytes,
                                                 fileNames: fileNames,
-                                                tujuanPembelajaranId:
-                                                    selectedTujuanPembelajaranId!,
-                                                // tolong ganti biar jadi timestamp saat dikirim ke database
-                                                deadline: formatDateTime(
-                                                  selectedDeadline!,
-                                                ), // Format di sini
-                                                // tipeTugas: selectedTipeTugas!,
-                                                statusTugas:
-                                                    selectedStatusTugas!,
                                               );
 
                                           // Tutup loading indicator setelah selesai
@@ -706,7 +417,7 @@ class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
                                               builder: (context) =>
                                                   DialogSuccessWidget(
                                                     succesText:
-                                                        'Tugas berhasil ditambahkan',
+                                                        'Materi berhasil ditambahkan',
                                                   ),
                                             );
 
@@ -745,7 +456,7 @@ class _TambahTugasScreenState extends ConsumerState<TambahTugasScreen> {
                                       ),
                                     ),
                                     child: const Text(
-                                      'Unggah Tugas',
+                                      'Kirim',
                                       style: TextStyle(color: Colors.white),
                                     ),
                                   ),

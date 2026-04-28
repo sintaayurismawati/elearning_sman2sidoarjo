@@ -311,7 +311,10 @@ class _TambahMateriScreenState extends ConsumerState<TambahMateriScreen> {
                                 pMinLines: 10,
                               ),
                               const SizedBox(height: 20),
-                              FileTextFieldWidget(addFileAction: _pilihFile),
+                              FileTextFieldWidget(
+                                addFileAction: _pilihFile,
+                                title: 'Pilih File',
+                              ),
                               const SizedBox(height: 20),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 class FileTextFieldWidget extends StatelessWidget {
+  final String title;
   final VoidCallback? addFileAction;
 
-  const FileTextFieldWidget({super.key, required this.addFileAction});
+  const FileTextFieldWidget({
+    super.key,
+    required this.title,
+    required this.addFileAction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,7 @@ class FileTextFieldWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "File Tambahan",
+          title,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
         SizedBox(height: 5),
