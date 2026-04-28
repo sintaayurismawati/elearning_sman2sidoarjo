@@ -3,10 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../core/enums/role_user_enum.dart';
 import '../../core/routes/routes_name.dart';
-import '../../services/auth/auth_service.dart';
 import 'auth/cubit/auth_cubit.dart';
 
 class MainPage extends StatefulWidget {
@@ -66,17 +64,8 @@ class _MainPageState extends State<MainPage> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) async {
-        if (didPop) return;
-
-        final confirm = await _showExitDialog();
-        if (confirm) {
-          context.read<AuthCubit>().logout();
-          context.go(RoutesNames.landing);
-        }
-      },
+    return WillPopScope(
+      onWillPop: () async => false,
       child: Scaffold(
         appBar: isDesktop ? null : AppBar(title: const Text("E-Learning")),
 
@@ -181,16 +170,14 @@ class _MainPageState extends State<MainPage> {
 
       case UserRole.guru:
         return [
+          _Menu("Kelas", Icons.calendar_month, RoutesNames.kelasGuru),
+          _Menu("Jadwal Mengajar", Icons.schedule, RoutesNames.jadwalMengajar),
           _Menu(
-            "Jadwal Akademik",
-            Icons.calendar_month,
-            RoutesNames.jadwalAkademik,
-          ),
-          _Menu(
-            "Jadwal Pelajaran",
+            "Rubrik Mata Pelajaran",
             Icons.schedule,
-            RoutesNames.jadwalPelajaran,
+            RoutesNames.rubrikMapelKelas,
           ),
+          _Menu("Nilai Akhir", Icons.schedule, RoutesNames.nilaiAkhirKelas),
         ];
 
       case UserRole.siswa:

@@ -1,18 +1,15 @@
 import 'package:elearning_sman2sidoarjo/core/enums/role_user_enum.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/jadwal_mengajar/jadwal_mengajar_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/detail_kelas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/kelas_guru_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/nilai_siswa/nilai_akhir_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/rubrik_mapel/rubrik_mapel_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/data_guru/data_guru_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/data_siswa/data_siswa_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/jadwal_akademik/jadwal_akademik_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/jadwal_pelajaran/jadwal_pelajaran_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/kelas/kelas_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/mata_pelajaran/mata_pelajaran_screen.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_akhir_screen.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_latsol_screen.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_tugas_screen.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_ujian_sumatif.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/sumatif_lingkup_materi.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/range_nilai_kategori/range_nilai_kategori_screen.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/rubrik_mapel/rubrik_mapel_screen.dart';
-import 'package:elearning_sman2sidoarjo/presentation/features/staff/tahun_ajaran/tahun_ajaran_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import '../../presentation/features/auth/screen/login_screen.dart';
@@ -26,15 +23,18 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: _getInitialRoute(),
 
-    /// 🔥 TARUH DI SINI
+    /// =======================
+    /// GLOBAL REDIRECT
+    /// =======================
     redirect: (context, state) async {
-      final role = await SharedPrefHelper.getRole();
+      final roleString = await SharedPrefHelper.getRole();
+      final role = roleString != null ? roleString.toUserRole() : null;
 
       final isLoggedIn = role != null;
       final isLoginPage = state.matchedLocation == RoutesNames.login;
-      // final isMainPage = state.matchedLocation == RoutesNames.main;
       final isProtectedRoute = state.matchedLocation.startsWith('/main');
 
+      /// ❌ Belum login tapi akses /main
       if (!isLoggedIn && isProtectedRoute) {
         return RoutesNames.landing;
       }
@@ -46,34 +46,54 @@ class AppRouter {
 
       return null;
     },
+
     routes: [
-      // LANDING
+      /// =======================
+      /// PUBLIC ROUTES
+      /// =======================
       GoRoute(
         path: RoutesNames.landing,
         builder: (context, state) => const ElearningLandingPage(),
       ),
-      // SPLASH
       GoRoute(
         path: RoutesNames.splashScreen,
         builder: (context, state) => const SplashScreen(),
       ),
-      // LOGIN
       GoRoute(
         path: RoutesNames.login,
         builder: (context, state) {
-          final roleUser = state.extra as UserRole; // ambil extra
+          final roleUser = state.extra as UserRole;
           return LoginScreen(roleUser: roleUser);
         },
       ),
+
+      /// =======================
+      /// MAIN (PROTECTED)
+      /// =======================
       ShellRoute(
         builder: (context, state, child) {
           return MainPage(child: child);
         },
         routes: [
-          // GoRoute(
-          //   path: RoutesNames.main, // ✅ TAMBAH INI
-          //   redirect: (_, _) => RoutesNames.dataGuru, // auto ke dashboard
-          // ),
+          /// 🔥 HANDLE /main BIAR GAK KOSONG
+          GoRoute(
+            path: RoutesNames.main,
+            redirect: (context, state) async {
+              final roleString = await SharedPrefHelper.getRole();
+              final role = roleString != null ? roleString.toUserRole() : null;
+
+              if (role == UserRole.staff) return RoutesNames.dataGuru;
+              if (role == UserRole.admin) return RoutesNames.dataSiswa;
+              if (role == UserRole.guru) return RoutesNames.kelasGuru;
+              if (role == UserRole.siswa) return RoutesNames.mataPelajaran;
+
+              return RoutesNames.landing;
+            },
+          ),
+
+          /// =======================
+          /// STAFF
+          /// =======================
           GoRoute(
             path: RoutesNames.dataGuru,
             builder: (context, state) => const DataGuruScreen(),
@@ -98,37 +118,29 @@ class AppRouter {
             path: RoutesNames.mataPelajaran,
             builder: (context, state) => const MataPelajaranScreen(),
           ),
+
+          /// =======================
+          /// GURU
+          /// =======================
           GoRoute(
-            path: RoutesNames.nilaiAkhir,
-            builder: (context, state) => const NilaiAkhirScreen(),
+            path: RoutesNames.kelasGuru,
+            builder: (context, state) => const KelasGuruScreen(),
           ),
           GoRoute(
-            path: RoutesNames.nilaiLatsol,
-            builder: (context, state) => const NilaiLatsolScreen(),
+            path: RoutesNames.detailKelas,
+            builder: (context, state) => const DetailKelasScreen(),
           ),
           GoRoute(
-            path: RoutesNames.nilaiTugas,
-            builder: (context, state) => const NilaiTugasScreen(),
+            path: RoutesNames.jadwalMengajar,
+            builder: (context, state) => const JadwalMengajarScreen(),
           ),
           GoRoute(
-            path: RoutesNames.nlaiUjianSumatif,
-            builder: (context, state) => const NilaiUjianSumatifScreen(),
+            path: RoutesNames.rubrikMapelKelas,
+            builder: (context, state) => const RubrikMapelGuruScreen(),
           ),
           GoRoute(
-            path: RoutesNames.sumatifLingkupMateri,
-            builder: (context, state) => const NilaiSumatifLMScreen(),
-          ),
-          GoRoute(
-            path: RoutesNames.rangeNilaiKategori,
-            builder: (context, state) => const RangeNilaiKategoriScreen(),
-          ),
-          GoRoute(
-            path: RoutesNames.rubrikMapel,
-            builder: (context, state) => const RubrikMapelScreen(),
-          ),
-          GoRoute(
-            path: RoutesNames.tahunAjaran,
-            builder: (context, state) => const TahunAjaranScreen(),
+            path: RoutesNames.nilaiAkhirKelas,
+            builder: (context, state) => const NilaiAkhirKelasScreen(),
           ),
         ],
       ),
@@ -137,9 +149,9 @@ class AppRouter {
 
   static String _getInitialRoute() {
     if (kIsWeb) {
-      return '/'; // WEB → Landing
+      return '/';
     } else {
-      return RoutesNames.splashScreen; // MOBILE → Splash
+      return RoutesNames.splashScreen;
     }
   }
 }

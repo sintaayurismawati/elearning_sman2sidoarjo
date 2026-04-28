@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
             } else if (state.role == UserRole.admin) {
               context.go(RoutesNames.dataSiswa);
             } else if (state.role == UserRole.guru) {
-              context.go(RoutesNames.jadwalPelajaran);
+              context.go(RoutesNames.kelasGuru);
             } else if (state.role == UserRole.siswa) {
               context.go(RoutesNames.mataPelajaran);
             }

@@ -15,15 +15,15 @@ import '../../../shared_widgets/general_old/search_textfield_widget.dart';
 import '../../../shared_widgets/general_old/table_cell.dart';
 import '../../../shared_widgets/general_old/table_header_cell.dart';
 
-class RubrikMapelScreen extends ConsumerStatefulWidget {
-  const RubrikMapelScreen({super.key});
+class RubrikMapelGuruScreen extends ConsumerStatefulWidget {
+  const RubrikMapelGuruScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _RubrikMapelScreenState();
+      _RubrikMapelGuruScreenState();
 }
 
-class _RubrikMapelScreenState extends ConsumerState<RubrikMapelScreen> {
+class _RubrikMapelGuruScreenState extends ConsumerState<RubrikMapelGuruScreen> {
   String? selectedMapel;
   String? selectedTahunAjaran;
 

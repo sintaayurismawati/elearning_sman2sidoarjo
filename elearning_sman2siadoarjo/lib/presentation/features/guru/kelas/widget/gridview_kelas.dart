@@ -6,6 +6,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/helper/shared_pref_helper.dart';
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../models/guru/kelas_guru_model.dart';
 import '../../../../controllers/guru/kelas_guru_riverpod.dart';
 
@@ -139,18 +141,25 @@ class GridviewKelasWidget extends ConsumerWidget {
                   TextButton(
                     onPressed: () async {
                       // Simpan kelasMapelId ke SharedPreferences
-                      final prefs = await SharedPreferences.getInstance();
-                      await prefs.setInt('kelasMapelId', kelas.kelasMapelId);
+                      await SharedPrefHelper.saveKelasMapelId(
+                        kelas.kelasMapelId,
+                      );
+
+                      // final prefs = await SharedPreferences.getInstance();
+                      // await prefs.setInt('kelasMapelId', kelas.kelasMapelId);
+
                       ref
                           .read(kelasGuruNotifierProvider.notifier)
                           .setSelectedKmp();
                       // Pastikan widget masih mounted sebelum pakai context
                       if (!context.mounted) return;
 
-                      context.go(
-                        '/dashboard/guru/kelas/${kelas.kelasMapelId}',
-                        // extra: selectedKelas,
-                      );
+                      // context.go(
+                      //   '/dashboard/guru/kelas/${kelas.kelasMapelId}',
+                      //   // extra: selectedKelas,
+                      // );
+
+                      context.go(RoutesNames.detailKelas);
                     },
                     style: TextButton.styleFrom(
                       foregroundColor: const Color.fromARGB(

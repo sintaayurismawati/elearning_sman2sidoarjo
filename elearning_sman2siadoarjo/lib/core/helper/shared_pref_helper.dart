@@ -1,9 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../enums/role_user_enum.dart';
+
 class SharedPrefHelper {
   static const String _keyRoleUser = 'role_user';
   static const String _keyUserId = 'user_id';
   static const String _keyAuthToken = 'auth_token';
+  static const String _keyKelasMapelId = 'kelasMapelId';
 
   /// ======================
   /// USER ID
@@ -32,6 +35,13 @@ class SharedPrefHelper {
     return prefs.getString(_keyRoleUser);
   }
 
+  static Future<UserRole?> getRoleEnum() async {
+    final roleString = await getRole(); // ambil String
+    if (roleString == null) return null;
+
+    return roleString.toUserRole(); // 🔥 convert ke enum
+  }
+
   static Future<void> clearRole() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_keyRoleUser);
@@ -48,6 +58,19 @@ class SharedPrefHelper {
   static Future<String?> getAuthToken() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_keyAuthToken);
+  }
+
+  /// ======================
+  /// KELAS MAPEL ID
+  /// ======================
+  static Future<void> saveKelasMapelId(int kelasMapelId) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_keyKelasMapelId, kelasMapelId);
+  }
+
+  static Future<int?> getKelasMapelId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(_keyKelasMapelId);
   }
 
   /// ======================

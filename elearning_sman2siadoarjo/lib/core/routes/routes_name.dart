@@ -24,6 +24,19 @@ class RoutesNames {
   // GURU
   static const String jadwalMengajar = '/main/jadwalMengajar';
   static const String kelompokBelajar = '/main/kelompokBelajar';
+  static const String materiKelas = '/main/materi';
+  static const String pratinjauMateri = '/main/materi/pratinjau';
+  static const String editMateri = '/main/materi/edit';
+  static const String tambahMateri = '/main/materi/tambah';
+  static const String siswaKelas = '/main/daftarSiswa';
+  static const String tugasKelas = '/main/tugas';
+  static const String detailTugas = '/main/tugas/detail';
+  static const String tambahTugas = '/main/tugas/tambah';
+  static const String editTugas = '/main/tugas/edit';
+  static const String penilaianTugas = '/main/tugas/penilaian';
+  static const String kelasGuru = '/main/kelasGuru';
+  static const String detailKelas = '/main/kelasGuru/detail';
+
   // sampe sini
   static const String nilaiAkhirKelas = '/main/nilaiAkhirKelas';
   static const String nilaiLatsolKelas = '/main/nilaiLatsolKelas';
