@@ -12,12 +12,13 @@ class RoutesNames {
   static const String mataPelajaran = '/main/mataPelajaran';
   static const String jadwalAkademik = '/main/jadwalAkademik';
   static const String jadwalPelajaran = '/main/jadwalPelajaran';
-  static const String rubrikMapel = 'main/rubrikMapel';
+  static const String rubrikMapelStaff = '/main/rubrikMapel';
+  static const String detailRubrikMapelStaff = '/main/rubrikMapel/detail';
   static const String tahunAjaran = '/main/tahunAjaran';
   static const String nilaiAkhir = '/main/nilaiAkhir';
   static const String nilaiLatsol = '/main/nilaiLatsol';
   static const String nilaiTugas = '/main/nilaiTugas';
-  static const String nlaiUjianSumatif = '/main/nilaiUjianSumatif';
+  static const String nilaiUjianSumatif = '/main/nilaiUjianSumatif';
   static const String sumatifLingkupMateri = '/main/sumatifLingkupMateri';
   static const String rangeNilaiKategori = '/main/rangeNilaiKategori';
 

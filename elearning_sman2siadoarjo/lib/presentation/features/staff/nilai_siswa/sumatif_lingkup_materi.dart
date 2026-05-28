@@ -14,15 +14,15 @@ import '../../../shared_widgets/general_old/search_textfield_widget.dart';
 import '../../../shared_widgets/general_old/table_cell.dart';
 import '../../../shared_widgets/general_old/table_header_cell.dart';
 
-class NilaiSumatifLMScreen extends ConsumerStatefulWidget {
-  const NilaiSumatifLMScreen({super.key});
+class NilaiSumatifLMStaffScreen extends ConsumerStatefulWidget {
+  const NilaiSumatifLMStaffScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _NilaiSumatifLMScreenState();
+      _NilaiSumatifLMStaffScreenState();
 }
 
-class _NilaiSumatifLMScreenState extends ConsumerState<NilaiSumatifLMScreen> {
+class _NilaiSumatifLMStaffScreenState extends ConsumerState<NilaiSumatifLMStaffScreen> {
   String? selectedSemester;
   String? selectedKelas;
   String? selectedMapel;

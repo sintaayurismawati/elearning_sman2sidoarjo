@@ -13,15 +13,15 @@ import '../../../shared_widgets/general_old/search_textfield_widget.dart';
 import '../../../shared_widgets/general_old/table_cell.dart';
 import '../../../shared_widgets/general_old/table_header_cell.dart';
 
-class NilaiLatsolScreen extends ConsumerStatefulWidget {
-  const NilaiLatsolScreen({super.key});
+class NilaiLatsolStaffScreen extends ConsumerStatefulWidget {
+  const NilaiLatsolStaffScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _NilaiLatsolScreenState();
+      _NilaiLatsolStaffScreenState();
 }
 
-class _NilaiLatsolScreenState extends ConsumerState<NilaiLatsolScreen> {
+class _NilaiLatsolStaffScreenState extends ConsumerState<NilaiLatsolStaffScreen> {
   String? selectedSemester;
   String? selectedKelas;
   String? selectedMapel;

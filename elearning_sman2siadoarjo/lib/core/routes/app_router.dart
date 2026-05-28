@@ -30,6 +30,13 @@ import 'package:elearning_sman2sidoarjo/presentation/features/staff/jadwal_akade
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/jadwal_pelajaran/jadwal_pelajaran_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/kelas/kelas_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/mata_pelajaran/mata_pelajaran_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_akhir_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_latsol_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_tugas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/nilai_ujian_sumatif.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/staff/nilai_siswa/sumatif_lingkup_materi.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/staff/rubrik_mapel/rubrik_mapel_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/staff/tahun_ajaran/tahun_ajaran_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import '../../presentation/features/auth/screen/login_screen.dart';
@@ -140,6 +147,38 @@ class AppRouter {
           GoRoute(
             path: RoutesNames.mataPelajaran,
             builder: (context, state) => const MataPelajaranScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.rubrikMapelStaff,
+            builder: (context, state) => const RubrikMapelStaffScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.detailRubrikMapelStaff,
+            builder: (context, state) => const RubrikMapelStaffScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.tahunAjaran,
+            builder: (context, state) => const TahunAjaranStaffScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.nilaiLatsol,
+            builder: (context, state) => const NilaiLatsolStaffScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.nilaiTugas,
+            builder: (context, state) => const NilaiTugasStaffScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.sumatifLingkupMateri,
+            builder: (context, state) => const NilaiSumatifLMStaffScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.nilaiUjianSumatif,
+            builder: (context, state) => const NilaiUjianSumatifStaffScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.nilaiAkhir,
+            builder: (context, state) => const NilaiAkhirStaffScreen(),
           ),
 
           /// =======================

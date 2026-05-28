@@ -93,7 +93,7 @@ class _MainPageState extends State<MainPage> {
   Widget _buildSidebar() {
     final menus = _getMenusByRole(role!);
 
-    return Column(
+    return ListView(
       children: [
         UserAccountsDrawerHeader(
           accountName: Text(role!.name.toUpperCase()),
@@ -108,8 +108,6 @@ class _MainPageState extends State<MainPage> {
             onTap: () => context.go(menu.route),
           );
         }),
-
-        const Spacer(),
 
         ListTile(
           leading: const Icon(Icons.logout, color: Colors.red),
@@ -154,7 +152,7 @@ class _MainPageState extends State<MainPage> {
           _Menu(
             "Rubrik Mata Pelajaran",
             Icons.table_chart,
-            RoutesNames.rubrikMapel,
+            RoutesNames.rubrikMapelStaff,
           ),
           _Menu("Tahun Ajaran", Icons.book, RoutesNames.tahunAjaran),
           _Menu("Nilai Latihan Soal", Icons.score, RoutesNames.nilaiLatsol),
@@ -167,7 +165,7 @@ class _MainPageState extends State<MainPage> {
           _Menu(
             "Nilai Ujian Sumatif",
             Icons.score,
-            RoutesNames.nlaiUjianSumatif,
+            RoutesNames.nilaiUjianSumatif,
           ),
           _Menu("Nilai Akhir", Icons.score, RoutesNames.nilaiAkhir),
         ];
@@ -181,7 +179,7 @@ class _MainPageState extends State<MainPage> {
             Icons.schedule,
             RoutesNames.rubrikMapelKelas,
           ),
-          _Menu("Nilai Akhir", Icons.schedule, RoutesNames.nilaiAkhirKelas),
+          _Menu("Nilai Akhir", Icons.schedule, RoutesNames.nilaiAkhir),
         ];
 
       case UserRole.siswa:

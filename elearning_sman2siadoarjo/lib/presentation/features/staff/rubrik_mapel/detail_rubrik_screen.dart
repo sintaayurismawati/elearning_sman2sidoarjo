@@ -9,14 +9,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../controllers/staff/rubrik_mapel/rubrik_mapel_riverpod.dart';
 
-class RubrikDetailScreen extends ConsumerStatefulWidget {
+class RubrikMapelStaffDetailScreen extends ConsumerStatefulWidget {
   final int lingkupMateriId;
   final String lingkupMateri;
   final bool statusKunci;
   final int jumlahTP;
   final List<Map<String, dynamic>> tujuanPembelajaran;
 
-  const RubrikDetailScreen({
+  const RubrikMapelStaffDetailScreen({
     super.key,
     required this.lingkupMateriId,
     required this.lingkupMateri,
@@ -26,10 +26,10 @@ class RubrikDetailScreen extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<RubrikDetailScreen> createState() => _RubrikDetailScreenState();
+  ConsumerState<RubrikMapelStaffDetailScreen> createState() => _RubrikMapelStaffDetailScreenState();
 }
 
-class _RubrikDetailScreenState extends ConsumerState<RubrikDetailScreen> {
+class _RubrikMapelStaffDetailScreenState extends ConsumerState<RubrikMapelStaffDetailScreen> {
   late bool _isKoorMapel;
   bool _isLoading = true;
 

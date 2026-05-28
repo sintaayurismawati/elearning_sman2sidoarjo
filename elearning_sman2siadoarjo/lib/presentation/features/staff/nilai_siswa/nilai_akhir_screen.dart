@@ -21,15 +21,15 @@ import '../../../shared_widgets/general_old/search_textfield_widget.dart';
 import '../../../shared_widgets/general_old/table_cell.dart';
 import '../../../shared_widgets/general_old/table_header_cell.dart';
 
-class NilaiAkhirScreen extends ConsumerStatefulWidget {
-  const NilaiAkhirScreen({super.key});
+class NilaiAkhirStaffScreen extends ConsumerStatefulWidget {
+  const NilaiAkhirStaffScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _NilaiAkhirScreenState();
+      _NilaiAkhirStaffScreenState();
 }
 
-class _NilaiAkhirScreenState extends ConsumerState<NilaiAkhirScreen> {
+class _NilaiAkhirStaffScreenState extends ConsumerState<NilaiAkhirStaffScreen> {
   String? selectedSemester;
   String? selectedKelas;
   String? selectedMapel;

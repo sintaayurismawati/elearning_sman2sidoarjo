@@ -5,14 +5,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../models/staff/tahun_ajaran_model.dart';
 import '../../../../services/staff/tahun_ajaran_service.dart';
 
-class TahunAjaranScreen extends StatefulWidget {
-  const TahunAjaranScreen({super.key});
+class TahunAjaranStaffScreen extends StatefulWidget {
+  const TahunAjaranStaffScreen({super.key});
 
   @override
-  State<TahunAjaranScreen> createState() => _TahunAjaranScreenState();
+  State<TahunAjaranStaffScreen> createState() => _TahunAjaranStaffScreenState();
 }
 
-class _TahunAjaranScreenState extends State<TahunAjaranScreen> {
+class _TahunAjaranStaffScreenState extends State<TahunAjaranStaffScreen> {
   // Service
   final TahunAjaran1Service _tahunAjaranService = TahunAjaran1Service(
     Supabase.instance.client,
