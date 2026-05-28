@@ -1,5 +1,7 @@
 import 'package:elearning_sman2sidoarjo/core/enums/role_user_enum.dart';
 import 'package:elearning_sman2sidoarjo/models/siswa/kelas_siswa_model.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/admin/log_aktivitas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/admin/staff_kurikulum_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/jadwal_mengajar/jadwal_mengajar_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/detail_kelas_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/kelas_guru_screen.dart';
@@ -186,7 +188,7 @@ class AppRouter {
             path: RoutesNames.pengumpulanTugasSiswa,
             builder: (context, state) => const PengumpulanTugasSiswaScreen(),
           ),
-           GoRoute(
+          GoRoute(
             path: RoutesNames.detailUjianSiswa,
             builder: (context, state) => const DetailUjianSiswaScreen(),
           ),
@@ -197,6 +199,18 @@ class AppRouter {
           GoRoute(
             path: RoutesNames.jawabanUjianSiswa,
             builder: (context, state) => const LihatJawabanUjianSiswaScreen(),
+          ),
+
+          /// =======================
+          /// ADMIN
+          /// =======================
+          GoRoute(
+            path: RoutesNames.daftarStaff,
+            builder: (context, state) => const StaffKurikulumScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.logAktivitas,
+            builder: (context, state) => const LogAktivitasScreen(),
           ),
         ],
       ),

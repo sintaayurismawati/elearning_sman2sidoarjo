@@ -127,8 +127,12 @@ class _MainPageState extends State<MainPage> {
     switch (role) {
       case UserRole.admin:
         return [
-          _Menu("Data Siswa", Icons.person_2, RoutesNames.dataSiswa),
-          _Menu("Kelas", Icons.class_, RoutesNames.kelas),
+          _Menu(
+            "Daftar Staff Kurikulum",
+            Icons.person_2,
+            RoutesNames.daftarStaff,
+          ),
+          _Menu("Log Aktivitas", Icons.timelapse, RoutesNames.logAktivitas),
         ];
 
       case UserRole.staff:

@@ -62,4 +62,8 @@ class RoutesNames {
   static const String soalUjianSiswa = '/main/kelasSiswa/detail/ujian/soal';
   static const String jawabanUjianSiswa =
       '/main/kelasSiswa/detail/ujian/jawaban';
+
+  // ADMIN
+  static const String daftarStaff = '/main/daftarStaff';
+  static const String logAktivitas = '/main/logAktivitas';
 }
