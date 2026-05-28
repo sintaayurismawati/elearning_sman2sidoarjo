@@ -16,8 +16,8 @@ import '../../../../shared_widgets/general_old/textfield_3_widget.dart';
 import '../../../../shared_widgets/general_old/textfield_horizontal_widget.dart';
 
 class KelolaUjianScreen extends ConsumerStatefulWidget {
-  final String tipeUjian;
-  const KelolaUjianScreen({super.key, required this.tipeUjian});
+  // final String tipeUjian;
+  const KelolaUjianScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -421,7 +421,7 @@ class _KelolaUjianScreenState extends ConsumerState<KelolaUjianScreen> {
   void _simpanInfoUjian() {
     _infoUjian = InfoUjian(
       idTemp: DateTime.now().millisecondsSinceEpoch,
-      tipeUjian: widget.tipeUjian,
+      tipeUjian: selectedTipeUjian!,
       deskripsi: deskripsiController.text,
       tanggalUjian: selectedTanggal != null
           ? _formatDate(selectedTanggal!)

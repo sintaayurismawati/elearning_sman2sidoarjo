@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:elearning_sman2sidoarjo/core/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -105,10 +106,7 @@ class ListCardPengerjaanUjianWidget extends ConsumerWidget {
                       );
                       final kelasMapelId = prefs.getInt('kelasMapelId');
 
-                      context.go(
-                        '/dashboard/guru/kelas/$kelasMapelId/detail-pengerjaan-ujian',
-                        // extra: true, // Mark as coming from detail screen
-                      );
+                      context.go(RoutesNames.detailPengerjaanUjian);
                     },
                     icon: Icon(Icons.arrow_forward_ios, size: 16),
                   ),

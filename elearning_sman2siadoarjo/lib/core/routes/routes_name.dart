@@ -24,18 +24,25 @@ class RoutesNames {
   // GURU
   static const String jadwalMengajar = '/main/jadwalMengajar';
   static const String kelompokBelajar = '/main/kelompokBelajar';
-  static const String materiKelas = '/main/materi';
-  static const String pratinjauMateri = '/main/materi/pratinjau';
-  static const String editMateri = '/main/materi/edit';
-  static const String tambahMateri = '/main/materi/tambah';
-  static const String siswaKelas = '/main/daftarSiswa';
-  static const String tugasKelas = '/main/tugas';
-  static const String detailTugas = '/main/tugas/detail';
-  static const String tambahTugas = '/main/tugas/tambah';
-  static const String editTugas = '/main/tugas/edit';
-  static const String penilaianTugas = '/main/tugas/penilaian';
   static const String kelasGuru = '/main/kelasGuru';
   static const String detailKelas = '/main/kelasGuru/detail';
+  static const String materiKelas = '/main/kelasGuru/detail/materi';
+  static const String pratinjauMateri =
+      '/main/kelasGuru/detail/materi/pratinjau';
+  static const String editMateri = '/main/kelasGuru/detail/materi/edit';
+  static const String tambahMateri = '/main/kelasGuru/detail/materi/tambah';
+  static const String siswaKelas = '/main/kelasGuru/detail/daftarSiswa';
+  static const String tugasKelas = '/main/kelasGuru/detail/tugas';
+  static const String detailTugas = '/main/kelasGuru/detail/tugas/detail';
+  static const String tambahTugas = '/main/kelasGuru/detail/tugas/tambah';
+  static const String editTugas = '/main/kelasGuru/detail/tugas/edit';
+  static const String penilaianTugas = '/main/kelasGuru/detail/tugas/penilaian';
+  static const String ujianKelas = '/main/kelasGuru/detail/ujian';
+  static const String listPengerjaanUjian =
+      '/main/kelasGuru/detail/ujian/list-pengerjaan';
+  static const String detailPengerjaanUjian =
+      '/main/kelasGuru/detail/ujian/list-pengerjaan/detail';
+  static const String kelolaUjian = '/main/kelasGuru/detail/ujian/kelola';
 
   // sampe sini
   static const String nilaiAkhirKelas = '/main/nilaiAkhirKelas';

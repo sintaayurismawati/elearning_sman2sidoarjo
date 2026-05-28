@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously, avoid_print
 
+import 'package:elearning_sman2sidoarjo/core/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -46,10 +47,7 @@ class ListCardTugas extends ConsumerWidget {
                         'kelasMapelId',
                       ); // hasilnya bisa null
 
-                      context.go(
-                        '/dashboard/guru/kelas/$kelasMapelId/detail-tugas',
-                        // extra: true, // Mark as coming from detail screen
-                      );
+                      context.go(RoutesNames.detailTugas);
                     },
                     child: Row(
                       children: [
@@ -153,9 +151,7 @@ class ListCardTugas extends ConsumerWidget {
                       await prefs.setInt('tugasId', tugas.tugasId);
                       final kelasMapelId = prefs.getInt('kelasMapelId');
 
-                      context.go(
-                        '/dashboard/guru/kelas/$kelasMapelId/edit-tugas',
-                        // extra: true, // Mark as coming from detail screen
+                      context.go(RoutesNames.editTugas
                       );
                     }
                   },

@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously
 
+import 'package:elearning_sman2sidoarjo/core/routes/routes_name.dart';
 import 'package:elearning_sman2sidoarjo/presentation/shared_widgets/general_old/header2_widget.dart'
     show Header2Widget;
 import 'package:flutter/material.dart';
@@ -45,10 +46,11 @@ class _KontenUjianKelasMapelWidgetState
   String? selectedTipeUjian;
 
   void _navigateToTambahUjian(int kelasMapelId) {
-    context.go(
-      '/dashboard/guru/kelas/$kelasMapelId/tambah-ujian',
-      // extra: true, // Mark as coming from detail screen
-    );
+    // context.go(
+    //   '/dashboard/guru/kelas/$kelasMapelId/tambah-ujian',
+    //   // extra: true, // Mark as coming from detail screen
+    // );
+    context.go(RoutesNames.kelolaUjian);
   }
 
   @override

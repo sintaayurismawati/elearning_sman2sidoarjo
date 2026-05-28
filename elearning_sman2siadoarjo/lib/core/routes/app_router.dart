@@ -5,6 +5,16 @@ import 'package:elearning_sman2sidoarjo/presentation/features/admin/staff_kuriku
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/jadwal_mengajar/jadwal_mengajar_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/detail_kelas_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/kelas_guru_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/materi/edit_materi_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/materi/pratinjau_materi_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/materi/tambah_materi_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/tugas/beri_nilai_tugas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/tugas/detail_tugas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/tugas/edit_tugas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/tugas/tambah_tugas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/ujian/kelola_ujian_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/ujian/konten_daftar_pengerjaan_ujian.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/ujian/lihat_jawaban_ujian.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/nilai_siswa/nilai_akhir_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/rubrik_mapel/rubrik_mapel_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/siswa/jadwal_pelajaran/jadwal_mengajar_screen.dart';
@@ -143,6 +153,47 @@ class AppRouter {
             path: RoutesNames.detailKelas,
             builder: (context, state) => const DetailKelasScreen(),
           ),
+          GoRoute(
+            path: RoutesNames.tambahMateri,
+            builder: (context, state) => const TambahMateriScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.pratinjauMateri,
+            builder: (context, state) => const PratinjauMateriScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.editMateri,
+            builder: (context, state) => const EditMateriScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.tambahTugas,
+            builder: (context, state) => const TambahTugasScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.detailTugas,
+            builder: (context, state) => const DetailTugasScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.editTugas,
+            builder: (context, state) => const EditTugasScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.penilaianTugas,
+            builder: (context, state) => const BeriNilaiTugasScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.kelolaUjian,
+            builder: (context, state) => const KelolaUjianScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.detailPengerjaanUjian,
+            builder: (context, state) => const LihatJawabanUjianScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.listPengerjaanUjian,
+            builder: (context, state) => const KontenDaftarPengerjaanUjian(),
+          ),
+
           GoRoute(
             path: RoutesNames.jadwalMengajar,
             builder: (context, state) => const JadwalMengajarScreen(),
