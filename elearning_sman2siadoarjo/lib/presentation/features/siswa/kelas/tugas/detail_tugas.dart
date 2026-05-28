@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:io';
+import 'package:elearning_sman2sidoarjo/core/routes/routes_name.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,15 +17,16 @@ import '../../../../../models/siswa/tugas_kelas_model.dart';
 import '../../../../controllers/siswa/tugas/tugas_riverpod.dart';
 import '../../../../shared_widgets/general_old/main_button_widget.dart';
 
-class DetailTugasScreen extends ConsumerStatefulWidget {
-  const DetailTugasScreen({super.key});
+class DetailTugasSiswaScreen extends ConsumerStatefulWidget {
+  const DetailTugasSiswaScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _DetailTugasScreenState();
+      _DetailTugasSiswaScreenState();
 }
 
-class _DetailTugasScreenState extends ConsumerState<DetailTugasScreen> {
+class _DetailTugasSiswaScreenState
+    extends ConsumerState<DetailTugasSiswaScreen> {
   List<TugasKelas> detailTugasList = [];
   bool isLoading = true;
   TextEditingController komentarController = TextEditingController();
@@ -207,9 +209,7 @@ class _DetailTugasScreenState extends ConsumerState<DetailTugasScreen> {
     final prefs = await SharedPreferences.getInstance();
     final kelasMapelId = prefs.getInt('kelasMapelId');
 
-    context.go(
-      '/dashboard/siswa/kelas/$kelasMapelId/detail-tugas/pengumpulan-tugas',
-    );
+    context.go(RoutesNames.pengumpulanTugasSiswa);
   }
 
   @override
@@ -748,8 +748,9 @@ class _DetailTugasScreenState extends ConsumerState<DetailTugasScreen> {
                             tugas.tanggalDeadline,
                           );
 
+                          // ignore: use_build_context_synchronously
                           context.go(
-                            '/dashboard/siswa/kelas/$kelasMapelId/detail-tugas/edit-pengumpulan-tugas',
+                           RoutesNames.editTugasSiswa
                           );
                         },
                         btnTitle: "Ubah Pengumpulan",

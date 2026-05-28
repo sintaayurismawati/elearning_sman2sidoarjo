@@ -5,15 +5,15 @@ import '../../../../models/siswa/jadwal_mengajar_model.dart';
 import '../../../controllers/siswa/jadwal_mengajar/jadwal_mengajar_riverpod.dart';
 import '../../../shared_widgets/general_old/header2_widget.dart';
 
-class JadwalMengajarScreen extends ConsumerStatefulWidget {
-  const JadwalMengajarScreen({super.key});
+class JadwalPelajaranSiswaScreen extends ConsumerStatefulWidget {
+  const JadwalPelajaranSiswaScreen({super.key});
 
   @override
-  ConsumerState<JadwalMengajarScreen> createState() =>
-      _JadwalMengajarScreenState();
+  ConsumerState<JadwalPelajaranSiswaScreen> createState() =>
+      _JadwalPelajaranSiswaScreenState();
 }
 
-class _JadwalMengajarScreenState extends ConsumerState<JadwalMengajarScreen> {
+class _JadwalPelajaranSiswaScreenState extends ConsumerState<JadwalPelajaranSiswaScreen> {
   @override
   Widget build(BuildContext context) {
     final jadwalMengajarState = ref.watch(jadwalMengajarRiverpodProvider);

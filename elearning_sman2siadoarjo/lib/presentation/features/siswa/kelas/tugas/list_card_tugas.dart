@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../models/siswa/tugas_kelas_model.dart';
 
 class ListCardTugas extends StatelessWidget {
@@ -40,10 +41,7 @@ class ListCardTugas extends StatelessWidget {
                         'kelasMapelId',
                       ); // hasilnya bisa null
 
-                      context.go(
-                        '/dashboard/siswa/kelas/$kelasMapelId/detail-tugas',
-                        // extra: true, // Mark as coming from detail screen
-                      );
+                      context.go(RoutesNames.detailTugasSiswa);
                     },
                     child: Row(
                       children: [

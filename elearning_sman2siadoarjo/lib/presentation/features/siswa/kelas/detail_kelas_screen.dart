@@ -6,15 +6,15 @@ import 'materi/konten_materi.dart';
 import 'tugas/konten_tugas.dart';
 import 'ujian/konten_ujian.dart';
 
-class DetailKelasScreen extends ConsumerStatefulWidget {
-  const DetailKelasScreen({super.key});
+class DetailKelasSiswaScreen extends ConsumerStatefulWidget {
+  const DetailKelasSiswaScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _DetailKelasScreenState();
+      _DetailKelasSiswaScreenState();
 }
 
-class _DetailKelasScreenState extends ConsumerState<DetailKelasScreen>
+class _DetailKelasSiswaScreenState extends ConsumerState<DetailKelasSiswaScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 

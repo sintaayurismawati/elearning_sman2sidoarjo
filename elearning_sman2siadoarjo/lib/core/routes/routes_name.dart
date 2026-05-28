@@ -47,4 +47,19 @@ class RoutesNames {
   static const String rubrikMapelKelas = '/main/rubrikMapelKelas';
   static const String kelolaRubrikMapel = '/main/kelolaRubrikMapel';
   static const String detailRubrikMapel = '/main/detailRubrikMapel';
+
+  // siswa
+  static const String kelasSiswa = '/main/kelasSiswa';
+  static const String jadwalSiswa = '/main/jadwalSiswa';
+  static const String detailKelasSiswa = '/main/kelasSiswa/detail';
+  static const String detailMateriSiswa = '/main/kelasSiswa/detail/materi';
+  static const String detailTugasSiswa = '/main/kelasSiswa/detail/tugas';
+  static const String editTugasSiswa = '/main/kelasSiswa/detail/tugas/edit';
+  static const String pengumpulanTugasSiswa =
+      '/main/kelasSiswa/detail/tugas/pengumpulan';
+
+  static const String detailUjianSiswa = '/main/kelasSiswa/detail/ujian';
+  static const String soalUjianSiswa = '/main/kelasSiswa/detail/ujian/soal';
+  static const String jawabanUjianSiswa =
+      '/main/kelasSiswa/detail/ujian/jawaban';
 }

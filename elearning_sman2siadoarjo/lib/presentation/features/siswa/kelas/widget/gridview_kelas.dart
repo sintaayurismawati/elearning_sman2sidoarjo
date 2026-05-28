@@ -1,3 +1,4 @@
+import 'package:elearning_sman2sidoarjo/core/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -117,10 +118,11 @@ class GridviewKelasWidget extends ConsumerWidget {
                       // Pastikan widget masih mounted sebelum pakai context
                       if (!context.mounted) return;
 
-                      context.go(
-                        '/dashboard/siswa/kelas/${kelas.kelasMapelId}',
-                        // extra: selectedKelas,
-                      );
+                      // context.go(
+                      //   '/dashboard/siswa/kelas/${kelas.kelasMapelId}',
+                      //   // extra: selectedKelas,
+                      // );
+                      context.go(RoutesNames.detailKelasSiswa);
                     },
                     style: TextButton.styleFrom(
                       foregroundColor: const Color.fromARGB(

@@ -16,15 +16,15 @@ import '../../../../../models/siswa/materi_kelas_model.dart';
 import '../../../../controllers/siswa/materi/materi_kelas_riverpod.dart';
 import 'widget/komentar_materi_widget.dart';
 
-class DetailMateriScreen extends ConsumerStatefulWidget {
-  const DetailMateriScreen({super.key});
+class DetailMateriSiswaScreen extends ConsumerStatefulWidget {
+  const DetailMateriSiswaScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _DetailMateriScreenState();
+      _DetailMateriSiswaScreenState();
 }
 
-class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
+class _DetailMateriSiswaScreenState extends ConsumerState<DetailMateriSiswaScreen> {
   List<MateriKelas> detailMateriList = [];
   bool isLoading = true;
   TextEditingController komentarController = TextEditingController();
@@ -38,7 +38,7 @@ class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
     _checkPendingRoute();
   }
 
-  // di dalam _DetailMateriScreenState
+  // di dalam _DetailMateriSiswaScreenState
   Future<void> _checkPendingRoute() async {
     final prefs = await SharedPreferences.getInstance();
     final pendingRoute = prefs.getString('pendingRoute');

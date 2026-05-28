@@ -24,15 +24,15 @@ import '../../../../shared_widgets/general_old/dialog_success_widget.dart';
 import '../../../../shared_widgets/general_old/file_textfield_widget.dart';
 import '../../../../shared_widgets/general_old/header2_widget.dart';
 
-class EditPengumpulanTugas extends ConsumerStatefulWidget {
-  const EditPengumpulanTugas({super.key});
+class EditPengumpulanTugasSiswaScreen extends ConsumerStatefulWidget {
+  const EditPengumpulanTugasSiswaScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _EditPengumpulanTugasState();
+      _EditPengumpulanTugasSiswaScreenState();
 }
 
-class _EditPengumpulanTugasState extends ConsumerState<EditPengumpulanTugas> {
+class _EditPengumpulanTugasSiswaScreenState extends ConsumerState<EditPengumpulanTugasSiswaScreen> {
   final _formKey = GlobalKey<FormState>();
 
   List<PlatformFile> pickedFiles = [];

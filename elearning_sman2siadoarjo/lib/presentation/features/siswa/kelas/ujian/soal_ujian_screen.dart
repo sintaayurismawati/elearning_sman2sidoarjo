@@ -15,15 +15,15 @@ import '../../../../shared_widgets/general_old/main_button_widget.dart';
 import '../../../../shared_widgets/general_old/rich_textfield_widget.dart';
 import 'widget/dialog_timer_habis.dart';
 
-class SoalUjianScreen extends ConsumerStatefulWidget {
-  const SoalUjianScreen({super.key});
+class SoalUjianSiswaScreen extends ConsumerStatefulWidget {
+  const SoalUjianSiswaScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _SoalUjianScreenState();
+      _SoalUjianSiswaScreenState();
 }
 
-class _SoalUjianScreenState extends ConsumerState<SoalUjianScreen> {
+class _SoalUjianSiswaScreenState extends ConsumerState<SoalUjianSiswaScreen> {
   List<SoalUjianSiswa> daftarSoal = [];
   List<JawabanUjianModel> jawabanSiswa = [];
   List<TextEditingController> esaiControllers = [];
@@ -80,7 +80,7 @@ class _SoalUjianScreenState extends ConsumerState<SoalUjianScreen> {
     });
   }
 
-  // Di dalam _SoalUjianScreenState
+  // Di dalam _SoalUjianSiswaScreenState
 
   Future<void> submitJawabanOtomatis() async {
     // Simpan semua jawaban esai terakhir sebelum submit

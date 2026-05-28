@@ -7,16 +7,16 @@ import '../../../../../models/siswa/soal_ujian_siswa.dart';
 import '../../../../controllers/siswa/ujian/ujian_riverpod.dart';
 import '../../../../shared_widgets/general_old/rich_textfield_widget.dart';
 
-class LihatJawabanUjianScreen extends ConsumerStatefulWidget {
-  const LihatJawabanUjianScreen({super.key});
+class LihatJawabanUjianSiswaScreen extends ConsumerStatefulWidget {
+  const LihatJawabanUjianSiswaScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _LihatJawabanUjianScreenState();
+      _LihatJawabanUjianSiswaScreenState();
 }
 
-class _LihatJawabanUjianScreenState
-    extends ConsumerState<LihatJawabanUjianScreen> {
+class _LihatJawabanUjianSiswaScreenState
+    extends ConsumerState<LihatJawabanUjianSiswaScreen> {
   List<SoalUjianSiswa> daftarSoal = [];
   List<JawabanUjianModel> jawabanSiswa = [];
   List<TextEditingController> esaiControllers = [];

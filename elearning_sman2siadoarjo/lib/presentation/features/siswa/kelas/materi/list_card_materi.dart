@@ -1,3 +1,4 @@
+import 'package:elearning_sman2sidoarjo/core/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -40,10 +41,11 @@ class ListCardMateri extends StatelessWidget {
                         'kelasMapelId',
                       ); // hasilnya bisa null
 
-                      context.go(
-                        '/dashboard/siswa/kelas/$kelasMapelId/detail-materi',
-                        // extra: true, // Mark as coming from detail screen
-                      );
+                      // context.go(
+                      //   '/dashboard/siswa/kelas/$kelasMapelId/detail-materi',
+                      //   // extra: true, // Mark as coming from detail screen
+                      // );
+                      context.go(RoutesNames.detailMateriSiswa);
                     },
                     child: Row(
                       children: [

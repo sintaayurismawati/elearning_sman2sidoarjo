@@ -182,12 +182,8 @@ class _MainPageState extends State<MainPage> {
 
       case UserRole.siswa:
         return [
-          _Menu(
-            "Rubrik Mata Pelajaran",
-            Icons.table_chart,
-            RoutesNames.rubrikMapel,
-          ),
-          _Menu("Tahun Ajaran", Icons.book, RoutesNames.tahunAjaran),
+          _Menu("Kelas", Icons.class_, RoutesNames.kelasSiswa),
+          _Menu("Jadwal Pelajaran", Icons.book, RoutesNames.jadwalSiswa),
         ];
     }
   }

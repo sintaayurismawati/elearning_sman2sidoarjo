@@ -1,9 +1,17 @@
 import 'package:elearning_sman2sidoarjo/core/enums/role_user_enum.dart';
+import 'package:elearning_sman2sidoarjo/models/siswa/kelas_siswa_model.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/jadwal_mengajar/jadwal_mengajar_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/detail_kelas_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/kelas/kelas_guru_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/nilai_siswa/nilai_akhir_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/guru/rubrik_mapel/rubrik_mapel_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/siswa/jadwal_pelajaran/jadwal_mengajar_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/siswa/kelas/detail_kelas_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/siswa/kelas/kelas_siswa_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/siswa/kelas/tugas/pengumpulan_tugas.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/siswa/kelas/ujian/detail_ujian_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/siswa/kelas/ujian/lihat_jawaban_ujian_screen.dart';
+import 'package:elearning_sman2sidoarjo/presentation/features/siswa/kelas/ujian/soal_ujian_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/data_guru/data_guru_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/data_siswa/data_siswa_screen.dart';
 import 'package:elearning_sman2sidoarjo/presentation/features/staff/jadwal_akademik/jadwal_akademik_screen.dart';
@@ -16,6 +24,9 @@ import '../../presentation/features/auth/screen/login_screen.dart';
 import '../../presentation/features/init/splash_screen.dart';
 import '../../presentation/features/landing_page/screens/landing_page.dart';
 import '../../presentation/features/main_page.dart';
+import '../../presentation/features/siswa/kelas/materi/detail_materi.dart';
+import '../../presentation/features/siswa/kelas/tugas/detail_tugas.dart';
+import '../../presentation/features/siswa/kelas/tugas/edit_pengumpulan_tugas.dart';
 import '../helper/shared_pref_helper.dart';
 import 'routes_name.dart';
 
@@ -85,7 +96,7 @@ class AppRouter {
               if (role == UserRole.staff) return RoutesNames.dataGuru;
               if (role == UserRole.admin) return RoutesNames.dataSiswa;
               if (role == UserRole.guru) return RoutesNames.kelasGuru;
-              if (role == UserRole.siswa) return RoutesNames.mataPelajaran;
+              if (role == UserRole.siswa) return RoutesNames.kelasSiswa;
 
               return RoutesNames.landing;
             },
@@ -141,6 +152,51 @@ class AppRouter {
           GoRoute(
             path: RoutesNames.nilaiAkhirKelas,
             builder: (context, state) => const NilaiAkhirKelasScreen(),
+          ),
+
+          /// =======================
+          /// SISWA
+          /// =======================
+          GoRoute(
+            path: RoutesNames.kelasSiswa,
+            builder: (context, state) => const KelasSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.jadwalSiswa,
+            builder: (context, state) => const JadwalPelajaranSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.detailKelasSiswa,
+            builder: (context, state) => const DetailKelasSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.detailMateriSiswa,
+            builder: (context, state) => const DetailMateriSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.detailTugasSiswa,
+            builder: (context, state) => const DetailTugasSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.editTugasSiswa,
+            builder: (context, state) =>
+                const EditPengumpulanTugasSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.pengumpulanTugasSiswa,
+            builder: (context, state) => const PengumpulanTugasSiswaScreen(),
+          ),
+           GoRoute(
+            path: RoutesNames.detailUjianSiswa,
+            builder: (context, state) => const DetailUjianSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.soalUjianSiswa,
+            builder: (context, state) => const SoalUjianSiswaScreen(),
+          ),
+          GoRoute(
+            path: RoutesNames.jawabanUjianSiswa,
+            builder: (context, state) => const LihatJawabanUjianSiswaScreen(),
           ),
         ],
       ),

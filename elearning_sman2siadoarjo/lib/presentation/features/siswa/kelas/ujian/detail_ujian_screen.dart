@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_print
+import 'package:elearning_sman2sidoarjo/core/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -8,15 +9,16 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../../models/siswa/detail_ujian_model.dart';
 import '../../../../shared_widgets/general_old/main_button2_widget.dart'; // Tambahkan import
 
-class DetailUjianScreen extends ConsumerStatefulWidget {
-  const DetailUjianScreen({super.key});
+class DetailUjianSiswaScreen extends ConsumerStatefulWidget {
+  const DetailUjianSiswaScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _DetailUjianScreenState();
+      _DetailUjianSiswaScreenState();
 }
 
-class _DetailUjianScreenState extends ConsumerState<DetailUjianScreen> {
+class _DetailUjianSiswaScreenState
+    extends ConsumerState<DetailUjianSiswaScreen> {
   List<DetailUjian> detailUjian = [];
   bool isLoading = true;
   TextEditingController komentarController = TextEditingController();
@@ -425,9 +427,7 @@ class _DetailUjianScreenState extends ConsumerState<DetailUjianScreen> {
                                 final kelasMapelId = prefs.getInt(
                                   'kelasMapelId',
                                 );
-                                context.go(
-                                  '/dashboard/siswa/kelas/$kelasMapelId/soal-ujian',
-                                );
+                                context.go(RoutesNames.soalUjianSiswa);
                               },
                               btnTitle: "Ujian Belum Dimulai",
                             ),
@@ -441,9 +441,7 @@ class _DetailUjianScreenState extends ConsumerState<DetailUjianScreen> {
                                 final kelasMapelId = prefs.getInt(
                                   'kelasMapelId',
                                 );
-                                context.go(
-                                  '/dashboard/siswa/kelas/$kelasMapelId/soal-ujian',
-                                );
+                                context.go(RoutesNames.soalUjianSiswa);
                               },
                               btnTitle: "Ujian Sudah Ditutup",
                             ),
@@ -462,9 +460,7 @@ class _DetailUjianScreenState extends ConsumerState<DetailUjianScreen> {
                                   'endDateTime',
                                   endDateTime.toString(),
                                 );
-                                context.go(
-                                  '/dashboard/siswa/kelas/$kelasMapelId/soal-ujian',
-                                );
+                                context.go(RoutesNames.soalUjianSiswa);
                               },
                               btnTitle: "Kerjakan Sekarang",
                             ),
@@ -477,9 +473,7 @@ class _DetailUjianScreenState extends ConsumerState<DetailUjianScreen> {
                               final prefs =
                                   await SharedPreferences.getInstance();
                               final kelasMapelId = prefs.getInt('kelasMapelId');
-                              context.go(
-                                '/dashboard/siswa/kelas/$kelasMapelId/lihat-jawaban-ujian',
-                              );
+                              context.go(RoutesNames.jawabanUjianSiswa);
                             },
                             btnTitle: "Lihat",
                           ),
